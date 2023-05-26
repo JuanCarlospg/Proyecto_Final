@@ -5,7 +5,7 @@ if(empty($_GET['id'])){
   }else {
       include_once "../conexion.php";    
       $id=$_GET['id'];
-      $query=$connection->prepare('DELETE FROM departament WHERE id_dep=?');
+      $query=$connection->prepare('DELETE FROM DEPARTAMENT WHERE id_dep=?');
       $query->bind_param('i',$id);
       $query->execute();
 header('Location:../pagina2.php');

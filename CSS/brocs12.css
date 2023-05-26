@@ -4,8 +4,21 @@
     font-family: 'Source Serif Pro', serif;
 }
 
+#particles-js {
+    height: 100vh;
+    width: 100%;
+    z-index: -1;
+}
+
 body {
     margin: 0px;
+    background-image: url("../IMG/prueba.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 99;
 }
 
 #alumnos {
@@ -108,9 +121,9 @@ body {
     position: fixed;
     padding-top: 15px;
     padding-bottom: 15px;
-    background-color: rgb(47, 189, 236);
+    background-color:rgb(245, 245, 228);
     width: 100%;
-    border-bottom: solid gray;
+    border-bottom: solid rgb(214, 214, 214);
     height: 30px;
 }
 
@@ -212,6 +225,7 @@ select {
 .tabla {
     width: 100%;
     border-collapse: collapse;
+    border: solid  rgb(245, 245, 228) 2px;
 }
 
 #confir {
@@ -224,23 +238,28 @@ select {
     position: fixed;
 }
 
+
+h1{
+    color: #474747;
+}
+
 .tabla th,
 .tabla td {
     padding: 8px;
-    border: 1px solid grey;
+    text-align: center;
 }
 
 .tabla th {
-    background-color: rgb(47, 189, 236);
+    background-color: rgb(245, 245, 228);
     font-weight: bold;
 }
 
 .tabla tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: none;
 }
 
 .tabla tbody tr:hover {
-    background-color: #e5e5e5;
+    background-color: rgb(245, 245, 228);
 }
 
 @media (max-width: 1000px) {

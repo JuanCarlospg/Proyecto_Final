@@ -11,8 +11,7 @@ include_once "../conexion.php";
     $codi=$_POST['codi_classe'];
     $nom=$_POST['nom_classe'];
     $tutor=$_POST['tutor'];
-    // var_dump($_POST);
-    // die;
+
     if (strlen($codi) !=3) {
         header("location: pagina2.php");
         exit();

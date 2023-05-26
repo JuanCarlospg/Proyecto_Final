@@ -1,10 +1,17 @@
 <?php
 
+session_start();
+$servername = "172.24.16.223";
+$username = "macshool";
+$password = "mac05";
+$database = "DB_PROJECTE";
 
-try {
-    $connection=mysqli_connect('localhost','root','','db_projecte');
-        //echo "<script>alert('connexion establecida')</script>";
-    } catch (\Exception $e) {
-        header("Location: mantenimiento.html");
-    }
+// Crear conexión
+$connection = new mysqli($servername, $username, $password, $database);
+
+// Verificar la conexión
+if ($connection->connect_error) {
+    header("Location: mantenimiento.html");
+}
 ?>
+

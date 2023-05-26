@@ -142,14 +142,16 @@ function ediAl(elemento) {
 function ediPro(elemento) {
     ediProf.style.display = "block"
     console.log(elemento.parentElement.parentElement.children[0].innerText)
-    let dni_profe = elemento.parentElement.parentElement.children[0].innerText
-    let nom_profe = elemento.parentElement.parentElement.children[1].innerText
-    let apellido_profe = elemento.parentElement.parentElement.children[2].innerText
-    let cognom2_profe = elemento.parentElement.parentElement.children[3].innerText
-    let email_profe = elemento.parentElement.parentElement.children[4].innerText
-    let telf_profe = elemento.parentElement.parentElement.children[5].innerText
-    let sal_profe = elemento.parentElement.parentElement.children[6].innerText
-    let dept_prof = elemento.parentElement.parentElement.children[7].innerText
+    let id_profe = elemento.parentElement.parentElement.children[0].innerText
+    let dni_profe = elemento.parentElement.parentElement.children[1].innerText
+    let nom_profe = elemento.parentElement.parentElement.children[2].innerText
+    let apellido_profe = elemento.parentElement.parentElement.children[3].innerText
+    let cognom2_profe = elemento.parentElement.parentElement.children[4].innerText
+    let email_profe = elemento.parentElement.parentElement.children[5].innerText
+    let telf_profe = elemento.parentElement.parentElement.children[6].innerText
+    let sal_profe = elemento.parentElement.parentElement.children[7].innerText
+    let dept_prof = elemento.parentElement.parentElement.children[8].innerText
+    id_p.value = id_profe
     dni_p.value = dni_profe
     nom_p.value = nom_profe
     apellido1_p.value = apellido_profe

@@ -20,8 +20,10 @@ include_once "conexion.php";
     <title>Mac School</title>
     <link rel="stylesheet" href="./CSS/brocs12.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="./IMG/Icono_Home.png" type="image/x-icon">
 </head>
 <body>
+
     <div class="navbar" >
         <button onclick="alumno()" class="boton">Alumnos</button>
         <button onclick="profe()" class="boton">Profesores</button>
@@ -104,6 +106,7 @@ include_once "conexion.php";
         $listadoprf=mysqli_query($connection, $sql);
         foreach ($listadoprf as $listaprof) {
         echo "<tr>
+                <td class='invisible'>{$listaprof['id_profe']}</td>
                 <td>{$listaprof['dni_profe']}</td>
                 <td>{$listaprof['nom_profe']}</td>
                 <td>{$listaprof['cognom1_profe']}</td>
@@ -129,7 +132,6 @@ include_once "conexion.php";
         <tr>
         <th>Numero del departamento</th>
         <th>Nombre del departamento</th>
-        <th>Borrar</th>
         <th>Editar</th>
         </tr>
         </thead>
@@ -144,7 +146,6 @@ include_once "conexion.php";
                     <td class='invisible'>{$lista['id_dep']}</td>
                     <td>{$lista['codi_dept']}</td>
                     <td>{$lista['nom_dept']}</td>
-                    <td><button class='boton2' onclick='alertaBorrarDept({$lista['id_dep']})'>Borrar</button></td>
                     <td><button onclick='ediDep(this)' class='boton3'>Editar</button></td>
              </tr>";
         }
@@ -162,7 +163,6 @@ include_once "conexion.php";
         <th>Numero de la clase</th>
         <th>Clase</th>
         <th>Tutor</th>
-        <th>Borrar</th>
         <th>Editar</th>
         </tr>
         </thead>
@@ -180,7 +180,6 @@ include_once "conexion.php";
                     <td>{$lista['codi_classe']}</td>
                     <td>{$lista['nom_classe']}</td>
                     <td>{$lista['nom_profe']}</td>
-                    <td><button class='boton2' onclick='alertaBorrarClasse({$lista['id_classe']})'>Borrar</button></td>
                     <td><button onclick='ediCla(this)' class='boton3'>Editar</button></td>
              </tr>";
         }
@@ -244,7 +243,7 @@ include_once "conexion.php";
             <br>
             <select name="clasealu" id="">
                 <?php
-                $sql = "select id_classe, nom_classe from classe;";
+                $sql = "SELECT id_classe, nom_classe FROM CLASSE";
                 $respuestas = mysqli_query($connection, $sql);
                 foreach ($respuestas as $respuesta){
                     $id=$respuesta['id_classe'];
@@ -310,7 +309,7 @@ include_once "conexion.php";
             <br>
             <select name="deptprofe" id="">
                 <?php
-                $sql = "select id_dep, nom_dept from departament;";
+                $sql = "SELECT id_dep, nom_dept FROM DEPARTAMENT";
                 $respuestas = mysqli_query($connection, $sql);
                 foreach ($respuestas as $respuesta){
                     $idDEP=$respuesta['id_dep'];
@@ -367,10 +366,10 @@ include_once "conexion.php";
             <br>
             <select name="tutor" id="">
                 <?php
-                $sql = "select dni_profe, nom_profe from professor;";
+                $sql = "SELECT id_profe, nom_profe FROM PROFESSOR";
                 $respuestas = mysqli_query($connection, $sql);
                 foreach ($respuestas as $respuesta){
-                    $dni_profe=$respuesta['dni_profe'];
+                    $dni_profe=$respuesta['id_profe'];
                     $tutor=$respuesta['nom_profe'];
                     echo "<option value='$dni_profe'>$tutor</option>";
                 }
@@ -390,42 +389,42 @@ include_once "conexion.php";
            <div>
                 <label for="nombre">Nombre</label>
                 <br>
-                <input type="text" name="nombre" id="nombre" class="form-control" value="">
+                <input type="text" name="nombre" id="nombre" class="tex" value="">
            </div>
            <label id="EditarNombreAlumnoError" style="color:rgb(255, 15, 15)"></label></br>
            <br>
            <div>
                 <label for="nombre">Apellido 1</label>
                 <br>
-                <input type="text" name="apellido1" id="apellido1" class="form-control" value="">
+                <input type="text" name="apellido1" id="apellido1" class="tex" value="">
            </div>
            <label id="EditarNombre2AlumnoError" style="color:rgb(255, 15, 15)"></label></br>
            <br>
            <div>
                 <label for="nombre">Apellido 2</label>
                 <br>
-                <input type="text" name="apellido2" id="apellido2" class="form-control" value="">
+                <input type="text" name="apellido2" id="apellido2" class="tex" value="">
            </div>
            <label id="EditarNombre3AlumnoError" style="color:rgb(255, 15, 15)"></label></br>
            <br>
            <div>
                 <label for="nombre">Correo</label>
                 <br>
-                <input type="text" name="correo" id="correo" class="form-control" value="">
+                <input type="text" name="correo" id="correo" class="tex" value="">
            </div>
            <label id="EditarcorreoAlumnoError" style="color:rgb(255, 15, 15)"></label></br>
            <br>
            <div>
                 <label for="nombre">DNI</label>
                 <br>
-                <input type="text" name="dni" id="dni" class="form-control" value="">
+                <input type="text" name="dni" id="dni" class="tex" value="">
            </div>
            <label id="dniAlumnoErrorEditar" style="color:rgb(255, 15, 15)"></label></br>
            <br>
            <div>
                 <label for="nombre">Telefono</label>
                 <br>
-                <input type="text" name="telf" id="telf" class="form-control" value="">
+                <input type="text" name="telf" id="telf" class="tex" value="">
            </div>
            <label id="telfAluEdiError" style="color:rgb(255, 15, 15)"></label></br>
            <br>
@@ -434,7 +433,7 @@ include_once "conexion.php";
                 <br>
             <select name="clase" id="clase">
                 <?php
-                $sql = "select id_classe, nom_classe from classe;";
+                $sql = "SELECT id_classe, nom_classe FROM CLASSE";
                 $respuestas = mysqli_query($connection, $sql);
                 foreach ($respuestas as $respuesta){
                     $id=$respuesta['id_classe'];
@@ -451,52 +450,53 @@ include_once "conexion.php";
     <div id="ediProf" class="formulario">
     <button class="botoncerrar" onclick="volver3()"><img src="IMG/close.png" class="cerrar" align="right" alt=""></button>
         <form action="cambios/editarProfesores.php" method="post" onsubmit="return verificarEdiPro()">
+        <input type="hidden" name="id_profe" id="id_p" class="form-control" value="">
             <div>
                 <label for="nombre">DNI</label>
                 <br>
-                <input type="text" name="dni_profe" id="dni_p" class="form-control" value="">
+                <input type="text" name="dni_profe" id="dni_p" class="tex" value="">
             </div>
             <label id="dnifalloProfeEdi" style="color:rgb(255, 15, 15)"></label></br>
             <br>
             <div>
                 <label for="nombre">Nombre</label>
                 <br>
-                <input type="text" name="nom_profe" id="nom_p" class="form-control" value="">
+                <input type="text" name="nom_profe" id="nom_p" class="tex" value="">
             </div>
             <label id="falloProfeEdi" style="color:rgb(255, 15, 15)"></label></br>
             <br>
             <div>
                 <label for="nombre">Apellido 1</label>
                 <br>
-                <input type="text" name="cognom1_profe" id="apellido1_p" class="form-control" value="">
+                <input type="text" name="cognom1_profe" id="apellido1_p" class="tex" value="">
             </div>
             <label id="falloApellido1ProfeEdi" style="color:rgb(255, 15, 15)"></label></br>
             <br>
             <div>
                 <label for="nombre">Apellido 2</label>
                 <br>
-                <input type="text" name="cognom2_prof" id="cognom2_p" class="form-control" value="">
+                <input type="text" name="cognom2_prof" id="cognom2_p" class="tex" value="">
             </div>
             <label id="falloApellido2ProfeEdi" style="color:rgb(255, 15, 15)"></label></br>
             <br>
             <div>
                 <label for="nombre">Correo</label>
                 <br>
-                <input type="text" name="email_prof" id="email_p" class="form-control" value="">
+                <input type="text" name="email_prof" id="email_p" class="tex" value="">
             </div>
             <label id="correoError2Edi" style="color:rgb(255, 15, 15)"></label></br>
             <br>
             <div>
                 <label for="nombre">Telefono</label>
                 <br>
-                <input type="text" name="telf_prof" id="telf_p" class="form-control" value="">
+                <input type="text" name="telf_prof" id="telf_p" class="tex" value="">
             </div>
             <label id="telefonoProfeErrorEdi" style="color:rgb(255, 15, 15)"></label></br>
             <br>
             <div>
                 <label for="nombre">Salario</label>
                 <br>
-                <input type="text" name="sal_prof" id="sal_p" class="form-control" value="">
+                <input type="text" name="sal_prof" id="sal_p" class="tex" value="">
             </div>
             <label id="salProfeErrorEdi" style="color:rgb(255, 15, 15)"></label></br>
             <br>
@@ -505,7 +505,7 @@ include_once "conexion.php";
                 <br>
                 <select name="dept_prof">
                 <?php
-                $sql = "select id_dep, nom_dept from departament;";
+                $sql = "SELECT id_dep, nom_dept FROM DEPARTAMENT";
                 $respuestas = mysqli_query($connection, $sql);
                 foreach ($respuestas as $respuesta){
                     $idDEP=$respuesta['id_dep'];
@@ -528,14 +528,14 @@ include_once "conexion.php";
             <div>
                 <label for="nombre">Numero departamento</label>
                 <br>
-                <input type="text" name="codi_d" id="codi_d" class="form-control" value="">
+                <input type="text" name="codi_d" id="codi_d" class="tex" value="">
             </div>
             <label id="numDepErrorEdi" style="color:rgb(255, 15, 15)"></label></br>
             <br>
             <div>
                 <label for="nombre">Nombre departamento</label>
                 <br>
-                <input type="text" name="nom_d" id="nom_d" class="form-control" value="">
+                <input type="text" name="nom_d" id="nom_d" class="tex" value="">
             </div>
             <label id="nombreDepErrorEdi" style="color:rgb(255, 15, 15)"></label></br>
             <br>
@@ -549,14 +549,14 @@ include_once "conexion.php";
             <div>
                 <label for="nombre">Numero clase</label>
                 <br>
-                <input type="text" name="codi_classe" id="codi_c" class="form-control" value="">
+                <input type="text" name="codi_classe" id="codi_c" class="tex" value="">
             </div>
             <label id="numClaseErrorEdi" style="color:rgb(255, 15, 15)"></label></br>
             <br>
             <div>
                 <label for="nombre">Nombre clase</label>
                 <br>
-                <input type="text" name="nom_classe" id="nom_c" class="form-control" value="">
+                <input type="text" name="nom_classe" id="nom_c" class="tex" value="">
             </div>
             <label id="nombreClaseErrorEdi" style="color:rgb(255, 15, 15)"></label></br>
             <br>
@@ -564,12 +564,11 @@ include_once "conexion.php";
                 <label for="nombre">Tutor clase</label>
                 <br>
                 <select name="tutor">
-                <option value="" id="tutor_c"></option>
                 <?php
-                $sql = "select dni_profe, nom_profe from PROFESSOR;";
+                $sql = "SELECT id_profe, nom_profe FROM PROFESSOR";
                 $respuestas = mysqli_query($connection, $sql);
                 foreach ($respuestas as $respuesta){
-                    $idDEP=$respuesta['dni_profe'];
+                    $idDEP=$respuesta['id_profe'];
                     $DEP=$respuesta['nom_profe'];
                     echo "<option value='$idDEP'>$DEP</option>";
                 }
@@ -580,6 +579,8 @@ include_once "conexion.php";
             <button type="submit" class="boton3" name="enviar" value="4">Enviar</button>
         </form>
     </div>
+<script src="JS/particles.min.js "></script>
+<script src="JS/particulas.js "></script>
 <script src="JS/mai.js"></script>
 <script src="JS/validar3.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

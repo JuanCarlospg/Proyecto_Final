@@ -7,6 +7,7 @@ include_once "../conexion.php";
         die;
         header('Location:../pagina2.php');
 } else{
+    $idProfe=$_POST['id_profe'];
     $dniProf=$_POST['dni_profe'];
     $nom=$_POST['nom_profe'];
     $cognom1=$_POST['cognom1_profe'];
@@ -43,18 +44,17 @@ include_once "../conexion.php";
         header("location: pagina2.php");
         exit();
     }
-    // var_dump($_GET);
-    //     die;
-    $query=$connection->prepare('UPDATE professor SET
+    $query=$connection->prepare('UPDATE PROFESSOR SET
     nom_profe=?,
     cognom1_profe=?,
     cognom2_profe=?,
     email_prof=?,
     telf_prof=?,
     sal_prof=?,
-    dept_prof=?
-    WHERE dni_profe=?');
-    $query->bind_param('ssssiiis',$nom,$cognom1,$cognom2,$email,$telfProf,$salario,$dept,$dniProf);
+    dept_prof=?,
+    dni_profe=?
+    WHERE id_profe=?');
+    $query->bind_param('ssssiiisi',$nom,$cognom1,$cognom2,$email,$telfProf,$salario,$dept,$dniProf,$idProfe);
     $query->execute();
     header('Location:../pagina2.php');
 };

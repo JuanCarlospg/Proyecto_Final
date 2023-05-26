@@ -75,7 +75,7 @@ elseif ($accion==2){
         header("location: pagina2.php");
         exit();
     }
-    $sql="INSERT INTO PROFESSOR VALUE('NULL','$DNIprof','$nombreProf','$apellido1Prof','$apellido2Prof','$mailProf','$telefProf','$sal','$departamento');";
+    $sql="INSERT INTO PROFESSOR VALUE(NULL,'$DNIprof','$nombreProf','$apellido1Prof','$apellido2Prof','$mailProf','$telefProf','$sal','$departamento');";
     $insertar=mysqli_query($connection, $sql);
 }
 elseif ($accion==3){
@@ -104,7 +104,7 @@ elseif ($accion==4){
         header("location: pagina2.php");
         exit();
     }
-    $sql="INSERT INTO CLASSE VALUE(null,'$clasNum','$clasName','$tut');";
+    $sql="INSERT INTO CLASSE VALUE(NULL,'$clasNum','$clasName','$tut');";
     $insertar=mysqli_query($connection, $sql);
 }
 header("location: pagina2.php");

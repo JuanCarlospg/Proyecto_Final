@@ -39,9 +39,7 @@ include_once "../conexion.php";
         header("location: pagina2.php");
         exit();
     }
-    // var_dump($_POST);
-    // die;
-    $query=$connection->prepare('UPDATE alumne SET 
+    $query=$connection->prepare('UPDATE ALUMNE SET 
     nom_alu=?,
     cognom1_alu=?,
     cognom2_alu=?,
